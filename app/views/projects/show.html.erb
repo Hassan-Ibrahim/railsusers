@@ -1,0 +1,13 @@
+
+
+<div class="jumbotron container">
+  <h1 class="display-4"><%= @project.title %></h1>
+  <p class="lead"><%= @project.description %></p>
+  <hr class="my-4">
+  <p><%= @project.project_assignee %> : <%= @project.project_status %></p>
+  <p class="lead">
+    <%= link_to 'Edit', edit_project_path(@project), class:"btn btn-secondary" %>
+    <%= link_to 'Back', projects_path, class:"btn btn-secondary" %>
+  </p>
+</div>
+

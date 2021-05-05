@@ -1,0 +1,49 @@
+<%= form_with(model: project) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <% form.label :"Manager Id" %>
+    <%= form.text_field :user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :project_creator %>
+    <%= form.text_field :project_creator, class:"form-control", value: current_user.email %>
+  </div>
+
+  <div class="field form-group">
+
+    <%= form.label :project_assignee %>
+    <%= form.select :project_assignee, options_from_collection_for_select(User.all, "email","email") %>
+
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :project_status %>
+    <%= form.select :project_status, ["In Progress","Ready For Review", "Completed"], class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
