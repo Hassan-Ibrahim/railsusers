@@ -16,13 +16,6 @@
           </li>
         <% end %>
 
-        <% if current_user.QA? %>
-          <li class="nav-item">
-            <%= link_to 'Create Bug', new_project_bug_path, class:"nav-link" %>
-          </li>
-        <% end %>
-
-
         <li class="nav-item">
           <%= link_to 'Edit Profile', edit_user_registration_path, class:"nav-link" %>
         </li>
